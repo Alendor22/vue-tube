@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
  gem 'pry'
  gem 'omniauth'
  gem 'omniauth-google-oauth2'
+ gem 'google-api-client', '~> 0.34'
+ gem 'dotenv-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
