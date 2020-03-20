@@ -1,0 +1,14 @@
+<% if @email.errors.any? %>
+  <h4 style="color: red;"><%= @email.errors.full_messages.to_sentence %></h4>
+<% end %>
+
+<%= form_for [current_user, @email] do |f| %>
+  
+  <%= f.label :receiver %><br>
+  <%= f.collection_select :receiver_id, User.all, :id, :email %><br>
+  <%= f.label :subject %><br>
+  <%= f.text_field :subject %><br>
+  <%= f.label :content %><br>
+  <%= f.text_area :content %><br>
+<%= f.submit "Send Email" %>
+<% end %>
