@@ -1,0 +1,13 @@
+<nav>
+  <ul>
+  <% if user_signed_in? %>
+    <li><%= link_to "View Users Emails", user_emails_path(current_user.id) %></li>  
+    <li><%= link_to "Create Email", new_user_email_path(current_user.id) %></li>
+    <% if @email && @email.id %>
+      <li><%= link_to "Update Email", edit_user_email_path(current_user.id, @email.id) %></li>
+      <li><%= link_to "Delete Email", user_email_path(current_user.id, @email.id) %></li>
+    <% end %>
+  <% end %>
+ <%= link_to "Home", root_path %>
+  </ul>
+</nav>
