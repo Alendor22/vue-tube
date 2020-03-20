@@ -1,0 +1,19 @@
+<h3><%= @user.name %></h3>
+
+<p>These are your Emails</p>
+<p>
+  <strong>From:</strong>
+  <%= @email.senders_email %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @email.subject %>
+</p>
+
+<p>
+  <strong>Outline:</strong>
+  <%= @email.body %>
+</p>
+
+<%= link_to user.email, email_path(user, email) %> %></h3>
