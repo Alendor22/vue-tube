@@ -280,7 +280,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise
   dotenv-rails
-  google-api-client (~> 0.34)
+  google-api-client
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   omniauth
