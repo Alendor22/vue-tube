@@ -1,0 +1,8 @@
+<h2>From:</h2> <%= @email.sender.name %>
+<h2>Subject:</h2> <%= @email.subject %>
+<h2>Body:</h2> <p><%= @email.content %></p>
+
+<%= form_for @email do |f| %>
+  <%= f.check_box :read %>
+<%= f.submit "Mark as Read"%>
+<% end %>
