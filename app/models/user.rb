@@ -1,13 +1,16 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :watchlists
-  has_many :videos, through: :watchlists
+
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
+
+  has_many :sent_emails, class_name: "Email", foreign_key: :sender_id
+  has_many :received_emails, class_name: "Email", foreign_key: :receiver_id
+  has_many :to_contacts, -> { distinct }, through: :sent_emails, source: :receiver
+  has_many :from_contacts, -> { distinct }, through: :received_emails, source: :sender
 
   validates :name, presence: true
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 
         def self.from_omniauth(access_token)
 
@@ -24,5 +27,7 @@ class User < ApplicationRecord
           end
           user
         end
+
+  
 
 end
