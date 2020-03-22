@@ -15,7 +15,6 @@ class EmailsController < ApplicationController
   def create
     @email = current_user.sent_emails.build(email_params)
 
-      #binding.pry
       if @email.valid? 
         @email.save
         redirect_to  user_emails_path(current_user)
@@ -35,8 +34,7 @@ class EmailsController < ApplicationController
   end
 
   def destroy
-    set_email
-    @email.destroy(email_params)
+    set_email.destroy
     flash[:notice] = "Email Deleted!"
     redirect_to user_emails_path(current_user.id)
   end
