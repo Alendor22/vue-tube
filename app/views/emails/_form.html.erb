@@ -1,6 +1,7 @@
-<% if @email.errors.any? %>
+<% if @email && @email.errors.any? %>
   <h4 style="color: red;"><%= @email.errors.full_messages.to_sentence %></h4>
 <% end %>
+
 
 <%= form_for [current_user, @email] do |f| %>
   
