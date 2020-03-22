@@ -1,3 +1,9 @@
+<p>Unread Emails In Your Inbox</p>
+  <ul>
+    <% current_user.received_emails.unread.recent.each do |email|%>
+      <li><%= link_to email.subject, user_email_path(current_user, email) %></li>
+      <% end %>
+  </ul>
 <p>Emails In Your Inbox</p>
   <ul>
     <% current_user.received_emails.each do |email|%>
