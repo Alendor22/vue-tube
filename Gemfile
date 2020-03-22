@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
  gem 'omniauth-google-oauth2'
  gem 'google-api-client'
  gem 'dotenv-rails'
+ gem 'materialize-sass'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
