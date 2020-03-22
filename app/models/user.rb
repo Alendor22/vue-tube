@@ -22,12 +22,19 @@ class User < ApplicationRecord
               user = User.create(
                 name: data["name"],
                 email: data['email'],
-                 password: Devise.friendly_token[0,20]
+                password: Devise.friendly_token[0,20]
               )
           end
           user
         end
 
-  
 
+        # def destroy_email(email_id)
+        #   if email = sent_emails.find_by_id(email_id)
+        #     email.destroy
+        #   elsif email = received_emails.find_by_id(email_id)
+        #     email.destroy
+        #   end
+        # end
+  
 end
