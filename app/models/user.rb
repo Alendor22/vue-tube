@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 
+  # polymorphic relationship
   has_many :sent_emails, class_name: "Email", foreign_key: :sender_id
   has_many :received_emails, class_name: "Email", foreign_key: :receiver_id
   has_many :to_contacts, -> { distinct }, through: :sent_emails, source: :receiver
@@ -11,7 +12,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-
+        # Sign-in using Oauth, or User is created using Oauth, returns the User
         def self.from_omniauth(access_token)
 
           data = access_token.info
