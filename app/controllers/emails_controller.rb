@@ -35,8 +35,8 @@ class EmailsController < ApplicationController
   # explicit render update action
   def update
     set_email
-    @email.update(email_params)
-    redirect_to user_emails_path(current_user.id)
+      @email.update(email_params)
+      redirect_to user_emails_path(current_user.id)
   end
 
   # explicit render destroy action
