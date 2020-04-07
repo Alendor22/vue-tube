@@ -16,3 +16,20 @@
       <li><%= link_to email.subject, user_email_path(current_user, email) %></li>
       <% end %>
   </ul>
+
+  <%= form_tag user_emails_path, :method => "get", id: "search-form" do %>
+    <%= label_tag(:Search, "Please enter a letter the subject begins with to initiate a search:") %><br>
+    <%= text_field_tag :search, params[:search], placeholder: "Enter letter"  %><br>
+    
+    <%= submit_tag("Search", :name => nil) %>
+  <% end %>
+
+<p>Seach Results</p>
+<ul>
+<% if @emails.length < 1 %>
+  <h4 style="color: red;">This Search Yielded No Results</h4>
+<% end %>
+<% @emails.each do |email| %>
+  <li><%= link_to email.subject, user_email_path(current_user, email) %></li>
+<% end %>
+</ul>
