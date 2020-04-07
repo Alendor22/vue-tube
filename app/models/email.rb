@@ -5,7 +5,9 @@ class Email < ApplicationRecord
 
   validates :subject, :content, presence: true
 
-  scope :unread, ->{where(read: false)}
-  scope :recent, ->{where('updated_at > ?', Date.today)}
+  scope :unread, -> {where(read: false)}
+  scope :recent, -> {where('updated_at > ?', Date.today)}
+
+  scope :search, -> (subject) {where('subject LIKE ?', "%#{subject}%")}
 
 end
