@@ -2,8 +2,15 @@ class EmailsController < ApplicationController
   before_action :set_user #, only: [:new, :index, :create, :update :show]
   before_action :set_email, only: [:show]
   
-  # implied render index action
+  
+  
+  # explicit render index action
   def index
+    if params[:search]
+      @emails = Email.search(params[:search])
+    else 
+      @emails = Email.all.order('created_at DESC')
+    end
   end
 
   # new form action
@@ -17,6 +24,7 @@ class EmailsController < ApplicationController
 
   # explicit render create email action
   def create
+    binding.pry
     @email = current_user.sent_emails.build(email_params)
 
       if @email.valid? 
